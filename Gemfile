@@ -63,4 +63,17 @@ gem 'bcrypt', '~> 3.1.7'
 
 # A Sinatra extension for setting and showing Rails-like flash messages. 
 gem 'sinatra-flash', '~> 0.3.0'
+
 gem "pg", "~> 1.4"
+
+# solution to error: Psych::BadAlias: Unknown alias: default
+# when running heroku run rake db:migrate db:seed
+# add ruby "2.7.4"  to your gemfile
+# bundle install
+# git add .
+# git commit -m "added ruby version"
+# git push heroku main
+# heroku run rake db:migrate
+
+ruby "2.7.4"
+
