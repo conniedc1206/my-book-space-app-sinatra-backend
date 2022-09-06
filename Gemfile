@@ -74,6 +74,4 @@ gem "pg", "~> 1.4"
 # git commit -m "added ruby version"
 # git push heroku main
 # heroku run rake db:migrate
-
 ruby "2.7.4"
-
