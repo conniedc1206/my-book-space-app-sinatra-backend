@@ -1,5 +1,4 @@
 puts "🌱 Seeding spices..."
-
 # destroy all previous data and reset ids to 0
 Log.destroy_all
 Log.reset_pk_sequence
