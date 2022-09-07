@@ -2,9 +2,9 @@ puts "🌱 Seeding spices..."
 
 # destroy all previous data and reset ids to 0
 Log.destroy_all
-# Log.reset_pk_sequence
+Log.reset_pk_sequence
 User.destroy_all
-# User.reset_pk_sequence
+User.reset_pk_sequence
 
 # Seed your database here
 10.times do
