@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   post "/users" do
     # binding.pry
     # use the data in params to create a new user and log them in by
-    user = User.create(params) #{"first_name"=>"A", "last_name"=>"A", "email"=>"A@test.com", "password"=>"Apw"}
+    user = User.create(signup_params) #{"first_name"=>"A", "last_name"=>"A", "email"=>"A@test.com", "password"=>"Apw"}
     # setting the session[:id] equal to the user's id here
     session[:id] = user.id
     # this redirect takes us to the route: get '/users/home' that is in the Users Controller (go and look at that route in the Users Controller.)
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   post "/login" do
     # binding.pry
     # find the user by email/password
-    user = User.find_by(signup_params) #{"email"=>"test@test.com", "password"=>"testpw"}
+    user = User.find_by(params) #{"email"=>"test@test.com", "password"=>"testpw"}
     # setting the session[:id] equal to the user's id here
     session[:user_id] = user.id
     # binding.pry
