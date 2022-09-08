@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   post "/login" do
     # binding.pry
     # find the user by email/password
-    user = User.find_by(params) #{"email"=>"test@test.com", "password"=>"testpw"}
+    user = User.find_by(signup_params) #{"email"=>"test@test.com", "password"=>"testpw"}
     # setting the session[:id] equal to the user's id here
     session[:user_id] = user.id
     # binding.pry
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   private
 
-    def signup_params
-        params.require([:first_name, :last_name, :email, :password])
-    end
+  def signup_params
+    params.require([:first_name, :last_name, :email, :password])
+  end
 end
