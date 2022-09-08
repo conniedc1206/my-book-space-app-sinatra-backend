@@ -16,40 +16,29 @@ class UsersController < ApplicationController
 
   # User Registration
   post "/users" do
-    # binding.pry
     # use the data in params to create a new user and log them in by
-    user = User.create(signup_params) #{"first_name"=>"A", "last_name"=>"A", "email"=>"A@test.com", "password"=>"Apw"}
+    @user = User.new(first_name: params["first_name"], last_name: params["last_name"], email: params["email"], password: params["password"]) #{"first_name"=>"A", "last_name"=>"A", "email"=>"A@test.com", "password"=>"Apw"}
     # setting the session[:id] equal to the user's id here
-    session[:id] = user.id
+    # session[:id] = user.id
     # this redirect takes us to the route: get '/users/home' that is in the Users Controller (go and look at that route in the Users Controller.)
     # redirect '/users/home'
-    user.to_json
+    @user.save
+    @user.to_json
   end
 
   # User Logging In
   post "/login" do
-    # binding.pry
     # find the user by email/password
     user = User.find_by(params) #{"email"=>"test@test.com", "password"=>"testpw"}
     # setting the session[:id] equal to the user's id here
-    session[:user_id] = user.id
-    # binding.pry
+    # session[:user_id] = user.id
     # send the response to json
     user.to_json(include: [:logs])
 
-    # redirect them to their logs
-    # redirect "/logs"
-    # redirect (`http://localhost:3000/dashboard/#{@user.id}`)
   end
 
   # when user clicks "logout" button, use this endpoint
-  get '/logout' do
+  delete '/logout' do
     session.clear
-  end
-
-  private
-
-  def signup_params
-    params.require([:first_name, :last_name, :email, :password])
   end
 end
